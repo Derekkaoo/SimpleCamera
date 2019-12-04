@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Simple Camera Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="SimpleCameraController" customModule="SimpleCamera" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcD-tN-gQM">
+                                <rect key="frame" x="160" y="563" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="C4H-vB-ZuO"/>
+                                    <constraint firstAttribute="width" constant="55" id="HSB-Jf-zKi"/>
+                                </constraints>
+                                <state key="normal" image="CameraButton"/>
+                                <connections>
+                                    <action selector="captureWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AA3-gb-ort"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rCN-mY-fEk" firstAttribute="bottom" secondItem="rcD-tN-gQM" secondAttribute="bottom" constant="49" id="GBD-C5-0aY"/>
+                            <constraint firstItem="rcD-tN-gQM" firstAttribute="centerX" secondItem="rCN-mY-fEk" secondAttribute="centerX" id="oPw-Y9-kCx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rCN-mY-fEk"/>
+                    </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="rcD-tN-gQM" id="zhF-A8-AQG"/>
+                        <segue destination="jfK-bx-m0R" kind="presentation" identifier="showPhoto" id="SSV-Qr-mLv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="GXt-mO-fNH">
+            <objects>
+                <viewController id="jfK-bx-m0R" customClass="PhotoViewController" customModule="SimpleCamera" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9bc-0k-8jt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Ay-K2-nAb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vyh-uF-edp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZFc-Lr-Dh2">
+                                        <rect key="frame" x="326" y="21" width="37" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveWithSender:" destination="jfK-bx-m0R" eventType="touchUpInside" id="aTB-Ea-IHC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nPu-TH-4lt">
+                                        <rect key="frame" x="14" y="27" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="44j-9C-30P"/>
+                                            <constraint firstAttribute="width" constant="20" id="zZD-in-sTe"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="cross"/>
+                                        <connections>
+                                            <segue destination="vbF-p1-E0d" kind="unwind" unwindAction="unwindToCameraViewWithSegue:" id="sff-Pd-ya5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="nPu-TH-4lt" firstAttribute="leading" secondItem="Vyh-uF-edp" secondAttribute="leading" constant="14" id="Bmu-w1-UOR"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZFc-Lr-Dh2" secondAttribute="trailing" constant="12" id="Meu-uh-6br"/>
+                                    <constraint firstItem="ZFc-Lr-Dh2" firstAttribute="top" secondItem="Vyh-uF-edp" secondAttribute="top" constant="21" id="Qfg-Fo-Tev"/>
+                                    <constraint firstItem="nPu-TH-4lt" firstAttribute="top" secondItem="Vyh-uF-edp" secondAttribute="top" constant="27" id="cvd-Oq-1G7"/>
+                                    <constraint firstItem="ZFc-Lr-Dh2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Vyh-uF-edp" secondAttribute="leading" constant="20" symbolic="YES" id="d6d-7N-8uS"/>
+                                    <constraint firstAttribute="height" constant="60" id="oSJ-zb-Lh7"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Vyh-uF-edp" firstAttribute="leading" secondItem="6Ay-K2-nAb" secondAttribute="leading" id="60F-IJ-QKn"/>
+                            <constraint firstItem="UyA-7R-clz" firstAttribute="trailing" secondItem="6Ay-K2-nAb" secondAttribute="trailing" id="B7W-r8-lZy"/>
+                            <constraint firstAttribute="bottom" secondItem="6Ay-K2-nAb" secondAttribute="bottom" id="h0a-OD-iiS"/>
+                            <constraint firstItem="Vyh-uF-edp" firstAttribute="top" secondItem="6Ay-K2-nAb" secondAttribute="top" id="m4y-n4-wIi"/>
+                            <constraint firstItem="Vyh-uF-edp" firstAttribute="trailing" secondItem="6Ay-K2-nAb" secondAttribute="trailing" id="mR3-dA-LvO"/>
+                            <constraint firstItem="6Ay-K2-nAb" firstAttribute="top" secondItem="9bc-0k-8jt" secondAttribute="top" id="nSf-Wo-9iP"/>
+                            <constraint firstItem="6Ay-K2-nAb" firstAttribute="leading" secondItem="UyA-7R-clz" secondAttribute="leading" id="ocB-y6-dGq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UyA-7R-clz"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="6Ay-K2-nAb" id="Pd7-ar-i4J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="brr-oH-gr9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="vbF-p1-E0d" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1446" y="134"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="CameraButton" width="122" height="122"/>
+        <image name="cross" width="40" height="40"/>
+    </resources>
+</document>
